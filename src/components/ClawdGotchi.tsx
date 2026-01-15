@@ -373,18 +373,18 @@ const StatMeter = ({
   icon: string
   color: string
 }) => (
-  <div className="flex items-center gap-2">
-    <span className="w-5 text-sm">{icon}</span>
+  <div className="flex items-center gap-3 sm:gap-2">
+    <span className="w-6 sm:w-5 text-lg sm:text-sm">{icon}</span>
     <div className="flex-1">
-      <div className="flex justify-between mb-0.5">
-        <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider font-mono">
+      <div className="flex justify-between mb-1 sm:mb-0.5">
+        <span className="text-sm sm:text-[10px] font-bold text-neutral-400 uppercase tracking-wider font-mono">
           {label}
         </span>
-        <span className="text-[10px] font-bold text-neutral-300 font-mono">{value}%</span>
+        <span className="text-sm sm:text-[10px] font-bold text-neutral-300 font-mono">{value}%</span>
       </div>
-      <div className="h-2.5 bg-neutral-800 border border-neutral-700">
+      <div className="h-3 sm:h-2.5 bg-neutral-800 border border-neutral-700 rounded-sm">
         <motion.div
-          className="h-full"
+          className="h-full rounded-sm"
           style={{ backgroundColor: color }}
           initial={{ width: 0 }}
           animate={{ width: `${value}%` }}
@@ -413,16 +413,16 @@ export default function ClawdGotchi({ stage, mood, stats, accessoryId }: ClawdGo
   }
 
   return (
-    <div className="w-80 h-[400px] bg-[#2D2D2D] rounded-xl overflow-hidden flex flex-col font-mono border border-neutral-700">
+    <div className="w-full h-full min-h-screen sm:w-80 sm:h-[400px] sm:min-h-0 bg-[#2D2D2D] sm:rounded-xl overflow-hidden flex flex-col font-mono sm:border sm:border-neutral-700">
       {/* Header */}
-      <div className="px-4 pt-3 pb-2 flex items-center justify-between border-b border-neutral-700 bg-[#252525]">
+      <div className="px-5 sm:px-4 pt-4 sm:pt-3 pb-3 sm:pb-2 flex items-center justify-between border-b border-neutral-700 bg-[#252525] pt-safe-top">
         <div className="flex items-center gap-2">
-          <span className="text-lg">🦀</span>
-          <span className="text-sm font-bold tracking-tight text-neutral-200">ClawdGotchi</span>
+          <span className="text-2xl sm:text-lg">🦀</span>
+          <span className="text-lg sm:text-sm font-bold tracking-tight text-neutral-200">ClawdGotchi</span>
         </div>
-        <div className="flex items-center gap-1.5 px-2 py-0.5 bg-neutral-800 border border-neutral-600 rounded">
-          <span className="text-xs">{moodEmoji[mood]}</span>
-          <span className="text-[10px] font-bold text-neutral-400">{stageNames[stage]}</span>
+        <div className="flex items-center gap-2 sm:gap-1.5 px-3 sm:px-2 py-1.5 sm:py-0.5 bg-neutral-800 border border-neutral-600 rounded-lg sm:rounded">
+          <span className="text-base sm:text-xs">{moodEmoji[mood]}</span>
+          <span className="text-sm sm:text-[10px] font-bold text-neutral-400">{stageNames[stage]}</span>
         </div>
       </div>
 
@@ -470,7 +470,7 @@ export default function ClawdGotchi({ stage, mood, stats, accessoryId }: ClawdGo
       </div>
 
       {/* Stats panel */}
-      <div className="px-4 py-3 bg-[#252525] border-t border-neutral-700 space-y-2">
+      <div className="px-5 sm:px-4 py-4 sm:py-3 bg-[#252525] border-t border-neutral-700 space-y-3 sm:space-y-2 pb-safe-bottom">
         <StatMeter
           label="Energy"
           value={stats.energy}

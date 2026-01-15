@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="100" fill="#2D2D2D"/>
+  <g transform="translate(96, 140) scale(4)">
+    <!-- Body -->
+    <rect x="8" y="0" width="96" height="56" fill="#C27C5C"/>
+    <!-- Arms -->
+    <rect x="-4" y="25.6" width="12" height="14.4" fill="#C27C5C"/>
+    <rect x="104" y="25.6" width="12" height="14.4" fill="#C27C5C"/>
+    <!-- Left eye -->
+    <rect x="28" y="12" width="8" height="16" fill="#1a1a1a"/>
+    <!-- Right eye -->
+    <rect x="76" y="12" width="8" height="16" fill="#1a1a1a"/>
+    <!-- Legs -->
+    <rect x="16" y="56" width="9.6" height="20" fill="#8B5A42"/>
+    <rect x="30.4" y="56" width="9.6" height="20" fill="#8B5A42"/>
+    <rect x="72" y="56" width="9.6" height="20" fill="#8B5A42"/>
+    <rect x="86.4" y="56" width="9.6" height="20" fill="#8B5A42"/>
+  </g>
+</svg>

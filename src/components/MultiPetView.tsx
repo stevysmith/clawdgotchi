@@ -21,14 +21,14 @@ interface MultiPetViewProps {
 // Stat bar for detail panel
 function StatBar({ label, value, icon }: { label: string; value: number; icon: string }) {
   return (
-    <div className="flex items-center gap-2">
-      <span className="text-xs w-4">{icon}</span>
+    <div className="flex items-center gap-2 sm:gap-2">
+      <span className="text-sm sm:text-xs w-5 sm:w-4">{icon}</span>
       <div className="flex-1">
-        <div className="flex justify-between text-[9px] mb-0.5">
+        <div className="flex justify-between text-xs sm:text-[9px] mb-1 sm:mb-0.5">
           <span className="text-neutral-400">{label}</span>
           <span className="text-neutral-300 font-bold">{value}%</span>
         </div>
-        <div className="h-1.5 bg-neutral-700 rounded-full overflow-hidden">
+        <div className="h-2 sm:h-1.5 bg-neutral-700 rounded-full overflow-hidden">
           <motion.div
             className="h-full rounded-full"
             style={{
@@ -101,11 +101,11 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
 
   if (sessions.length === 0) {
     return (
-      <div className="w-full h-full flex flex-col items-center justify-center bg-[#2D2D2D] rounded-xl border border-neutral-700 p-8 relative overflow-hidden">
+      <div className="w-full h-full min-h-screen sm:min-h-0 flex flex-col items-center justify-center bg-[#2D2D2D] sm:rounded-xl sm:border sm:border-neutral-700 p-8 relative overflow-hidden">
         {/* Animated background */}
         <div className="absolute inset-0 opacity-10">
           <motion.div
-            className="absolute text-4xl"
+            className="absolute text-5xl sm:text-4xl"
             style={{ top: '20%', left: '10%' }}
             animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
             transition={{ duration: 3, repeat: Infinity }}
@@ -113,7 +113,7 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
             🐚
           </motion.div>
           <motion.div
-            className="absolute text-3xl"
+            className="absolute text-4xl sm:text-3xl"
             style={{ top: '60%', right: '15%' }}
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
@@ -121,7 +121,7 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
             🌊
           </motion.div>
           <motion.div
-            className="absolute text-2xl"
+            className="absolute text-3xl sm:text-2xl"
             style={{ bottom: '25%', left: '20%' }}
             animate={{ rotate: [-5, 5, -5] }}
             transition={{ duration: 4, repeat: Infinity }}
@@ -131,7 +131,7 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
         </div>
 
         <motion.div
-          className="text-6xl mb-4 relative z-10"
+          className="text-8xl sm:text-6xl mb-6 sm:mb-4 relative z-10"
           animate={{
             y: [0, -10, 0],
             rotate: [0, -3, 3, 0]
@@ -141,17 +141,17 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
           🦀
         </motion.div>
         <motion.p
-          className="text-neutral-400 text-sm font-mono text-center relative z-10"
+          className="text-neutral-400 text-lg sm:text-sm font-mono text-center relative z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           No crabs yet...
         </motion.p>
-        <p className="text-neutral-500 text-xs font-mono text-center mt-2 relative z-10">
+        <p className="text-neutral-500 text-sm sm:text-xs font-mono text-center mt-3 sm:mt-2 relative z-10 px-4">
           Start a Claude Code session to hatch a crab!
         </p>
         <motion.div
-          className="mt-4 text-[10px] text-neutral-600 font-mono relative z-10"
+          className="mt-6 sm:mt-4 text-sm sm:text-[10px] text-neutral-600 font-mono relative z-10"
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -172,26 +172,26 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
   const activeCount = sessions.filter(s => s.status === 'active').length
 
   return (
-    <div className="w-full h-full bg-[#2D2D2D] rounded-xl overflow-hidden flex flex-col font-mono border border-neutral-700">
+    <div className="w-full h-full min-h-screen sm:min-h-0 bg-[#2D2D2D] sm:rounded-xl overflow-hidden flex flex-col font-mono sm:border sm:border-neutral-700">
       {/* Header */}
-      <div className="px-3 py-2 flex items-center justify-between border-b border-neutral-700 bg-[#252525] shrink-0">
+      <div className="px-4 sm:px-3 py-3 sm:py-2 flex items-center justify-between border-b border-neutral-700 bg-[#252525] shrink-0 pt-safe-top">
         <div className="flex items-center gap-2">
-          <span className="text-base">🦀</span>
-          <span className="text-xs font-bold tracking-tight text-neutral-200">ClawdGotchi</span>
+          <span className="text-xl sm:text-base">🦀</span>
+          <span className="text-base sm:text-xs font-bold tracking-tight text-neutral-200">ClawdGotchi</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3 sm:gap-2">
           <button
             onClick={() => setShowHelp(!showHelp)}
-            className={`p-1 rounded transition-colors ${showHelp ? 'bg-neutral-700 text-neutral-200' : 'text-neutral-500 hover:text-neutral-300'}`}
+            className={`p-2 sm:p-1 rounded-lg sm:rounded transition-colors ${showHelp ? 'bg-neutral-700 text-neutral-200' : 'text-neutral-500 hover:text-neutral-300 active:bg-neutral-700'}`}
             title="How to play"
           >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" className="sm:w-[14px] sm:h-[14px]">
               <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm.93 4.94c.66 0 1.2.19 1.61.56.42.37.63.86.63 1.48 0 .42-.12.78-.36 1.08-.24.3-.52.52-.84.67-.26.12-.41.25-.45.4-.04.14-.06.3-.06.48v.39H7.9v-.47c0-.35.05-.64.16-.87.11-.23.33-.44.67-.63.28-.15.47-.3.58-.46.11-.16.17-.34.17-.55 0-.26-.09-.47-.26-.62-.17-.16-.42-.24-.74-.24-.34 0-.62.1-.82.28-.2.18-.32.44-.37.77H5.7c.06-.65.32-1.17.78-1.54.46-.38 1.06-.57 1.8-.57zM8 11.27c.28 0 .5.08.67.25.17.17.26.38.26.64 0 .25-.09.46-.26.63-.17.17-.4.26-.67.26-.28 0-.5-.09-.67-.26a.86.86 0 01-.26-.63c0-.26.09-.47.26-.64.17-.17.4-.25.67-.25z"/>
             </svg>
           </button>
-          <div className="flex items-center gap-1.5 px-2 py-0.5 bg-neutral-800 border border-neutral-600 rounded">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-            <span className="text-[10px] font-bold text-neutral-400">
+          <div className="flex items-center gap-1.5 px-3 sm:px-2 py-1.5 sm:py-0.5 bg-neutral-800 border border-neutral-600 rounded-lg sm:rounded">
+            <div className="w-2 sm:w-1.5 h-2 sm:h-1.5 rounded-full bg-green-500" />
+            <span className="text-sm sm:text-[10px] font-bold text-neutral-400">
               {activeCount} active
             </span>
           </div>
@@ -208,9 +208,9 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="p-3 space-y-2 text-[10px]">
-              <div className="font-bold text-neutral-300 text-xs">How Stats Work</div>
-              <div className="grid grid-cols-2 gap-2">
+            <div className="p-4 sm:p-3 space-y-3 sm:space-y-2 text-sm sm:text-[10px]">
+              <div className="font-bold text-neutral-300 text-base sm:text-xs">How Stats Work</div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-2">
                 <div>
                   <span className="text-neutral-400">⚡ Energy:</span>
                   <span className="text-neutral-500 ml-1">Commit frequently</span>
@@ -228,9 +228,9 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
                   <span className="text-neutral-500 ml-1">Stay organized</span>
                 </div>
               </div>
-              <div className="pt-1 border-t border-neutral-800 text-neutral-500 space-y-1">
-                <div><span className="text-neutral-400">🎯 Click</span> a crab to see details</div>
-                <div><span className="text-neutral-400">💕 Double-click</span> to pet them!</div>
+              <div className="pt-2 sm:pt-1 border-t border-neutral-800 text-neutral-500 space-y-2 sm:space-y-1">
+                <div><span className="text-neutral-400">🎯 Tap</span> a crab to see details</div>
+                <div><span className="text-neutral-400">💕 Double-tap</span> to pet them!</div>
                 <div><span className="text-neutral-400">🎨 Accessories</span> are unique per repo</div>
               </div>
             </div>
@@ -326,15 +326,15 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="p-3">
+            <div className="p-4 sm:p-3">
               {/* Header row */}
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-3 sm:mb-2">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-neutral-200 truncate">
+                    <span className="text-base sm:text-sm font-bold text-neutral-200 truncate">
                       {selectedSession.repoName}
                     </span>
-                    <div className={`px-1.5 py-0.5 rounded text-[8px] font-bold shrink-0 ${
+                    <div className={`px-2 sm:px-1.5 py-1 sm:py-0.5 rounded-lg sm:rounded text-xs sm:text-[8px] font-bold shrink-0 ${
                       selectedSession.status === 'active' ? 'bg-green-500/20 text-green-400' :
                       selectedSession.status === 'idle' ? 'bg-yellow-500/20 text-yellow-400' :
                       'bg-neutral-500/20 text-neutral-400'
@@ -342,22 +342,22 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
                       {selectedSession.status}
                     </div>
                   </div>
-                  <div className="text-[9px] text-neutral-500 truncate" title={selectedSession.cwd}>
+                  <div className="text-xs sm:text-[9px] text-neutral-500 truncate mt-1" title={selectedSession.cwd}>
                     {selectedSession.cwd}
                   </div>
                 </div>
                 <button
                   onClick={() => setSelectedId(null)}
-                  className="ml-2 p-1 text-neutral-500 hover:text-neutral-300 transition-colors"
+                  className="ml-2 p-2 sm:p-1 text-neutral-500 hover:text-neutral-300 active:text-neutral-200 transition-colors rounded-lg"
                 >
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                  <svg width="16" height="16" viewBox="0 0 12 12" fill="currentColor" className="sm:w-3 sm:h-3">
                     <path d="M9.5 3.205L8.795 2.5 6 5.295 3.205 2.5 2.5 3.205 5.295 6 2.5 8.795 3.205 9.5 6 6.705 8.795 9.5 9.5 8.795 6.705 6z"/>
                   </svg>
                 </button>
               </div>
 
               {/* Stats grid */}
-              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 sm:gap-y-1.5">
                 <StatBar label="Energy" value={selectedSession.stats.energy} icon="⚡" />
                 <StatBar label="Health" value={selectedSession.stats.health} icon="❤️" />
                 <StatBar label="Happiness" value={selectedSession.stats.happiness} icon="😊" />
@@ -366,9 +366,9 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
 
               {/* Tips */}
               {getTips(selectedSession.stats).length > 0 && (
-                <div className="mt-2 pt-2 border-t border-neutral-700 space-y-1">
+                <div className="mt-3 sm:mt-2 pt-3 sm:pt-2 border-t border-neutral-700 space-y-2 sm:space-y-1">
                   {getTips(selectedSession.stats).map((tip, i) => (
-                    <div key={i} className="text-[9px] text-amber-400/80">
+                    <div key={i} className="text-xs sm:text-[9px] text-amber-400/80">
                       {tip}
                     </div>
                   ))}
@@ -381,8 +381,8 @@ export default function MultiPetView({ sessions }: MultiPetViewProps) {
 
       {/* Footer - only show when no selection */}
       {!selectedSession && (
-        <div className="px-3 py-1.5 bg-[#252525] border-t border-neutral-700 shrink-0">
-          <div className="flex items-center justify-between text-[9px] text-neutral-500 font-mono">
+        <div className="px-4 sm:px-3 py-3 sm:py-1.5 bg-[#252525] border-t border-neutral-700 shrink-0 pb-safe-bottom">
+          <div className="flex items-center justify-between text-sm sm:text-[9px] text-neutral-500 font-mono">
             <span>{sessions.length} crab{sessions.length !== 1 ? 's' : ''} wandering</span>
             <span>{avgHealth}% avg health</span>
           </div>

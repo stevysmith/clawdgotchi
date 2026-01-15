@@ -180,10 +180,10 @@ export default function App() {
 
   if (isLoading) {
     return (
-      <div className="w-80 h-[400px] bg-neutral-900 rounded-2xl flex items-center justify-center">
+      <div className="w-full h-full min-h-screen sm:w-80 sm:h-[400px] sm:min-h-0 bg-neutral-900 sm:rounded-2xl flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-claude-orange border-t-transparent rounded-full animate-spin" />
-          <span className="text-sm text-neutral-400">Waking up...</span>
+          <div className="w-10 h-10 sm:w-8 sm:h-8 border-2 border-claude-orange border-t-transparent rounded-full animate-spin" />
+          <span className="text-base sm:text-sm text-neutral-400">Waking up...</span>
         </div>
       </div>
     )
