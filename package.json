@@ -1,0 +1,90 @@
+{
+  "name": "clawdgotchi",
+  "version": "0.1.0",
+  "description": "Your Claude Code companion - a Tamagotchi for developer hygiene",
+  "author": "Anthropic",
+  "license": "MIT",
+  "homepage": "https://github.com/anthropics/clawdgotchi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthropics/clawdgotchi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anthropics/clawdgotchi/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "tamagotchi",
+    "developer-tools",
+    "electron",
+    "menubar"
+  ],
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && npm run electron:compile",
+    "electron:dev": "NODE_OPTIONS='' concurrently \"vite\" \"wait-on http://localhost:5173 && NODE_OPTIONS='' electron .\"",
+    "electron:compile": "tsc -p tsconfig.electron.json",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "framer-motion": "^11.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.clawdgotchi.app",
+    "productName": "ClawdGotchi",
+    "directories": {
+      "buildResources": "assets/icons/build",
+      "output": "release"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icons/build/icon.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    },
+    "dmg": {
+      "title": "ClawdGotchi",
+      "contents": [
+        { "x": 130, "y": 220 },
+        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+      ]
+    },
+    "extraResources": [
+      {
+        "from": "assets/icons/build/menubar-iconTemplate.png",
+        "to": "menubar-iconTemplate.png"
+      },
+      {
+        "from": "assets/icons/build/menubar-iconTemplate@2x.png",
+        "to": "menubar-iconTemplate@2x.png"
+      },
+      {
+        "from": "assets/hooks",
+        "to": "hooks"
+      }
+    ]
+  }
+}

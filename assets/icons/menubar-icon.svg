@@ -1,0 +1,16 @@
+<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clawd silhouette for menubar - works on light/dark backgrounds -->
+  <!-- Body -->
+  <rect x="3" y="2" width="16" height="12" fill="currentColor"/>
+  <!-- Arms -->
+  <rect x="1" y="7" width="2" height="3" fill="currentColor"/>
+  <rect x="19" y="7" width="2" height="3" fill="currentColor"/>
+  <!-- Legs (2 pairs) -->
+  <rect x="5" y="14" width="2" height="4" fill="currentColor"/>
+  <rect x="8" y="14" width="2" height="4" fill="currentColor"/>
+  <rect x="12" y="14" width="2" height="4" fill="currentColor"/>
+  <rect x="15" y="14" width="2" height="4" fill="currentColor"/>
+  <!-- Eyes (cut out) -->
+  <rect x="6" y="5" width="2" height="4" fill="black" fill-opacity="0"/>
+  <rect x="14" y="5" width="2" height="4" fill="black" fill-opacity="0"/>
+</svg>

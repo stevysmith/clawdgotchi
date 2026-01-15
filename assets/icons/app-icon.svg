@@ -1,0 +1,27 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- ClawdGotchi App Icon - Full color -->
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="#2D2D2D"/>
+  <circle cx="256" cy="256" r="220" fill="#1E1E1E"/>
+
+  <!-- Clawd body -->
+  <rect x="116" y="140" width="280" height="180" rx="4" fill="#C27C5C"/>
+
+  <!-- Arms -->
+  <rect x="86" y="200" width="30" height="50" rx="2" fill="#C27C5C"/>
+  <rect x="396" y="200" width="30" height="50" rx="2" fill="#C27C5C"/>
+
+  <!-- Eyes - tall vertical rectangles -->
+  <rect x="170" y="180" width="28" height="60" rx="2" fill="#1a1a1a"/>
+  <rect x="314" y="180" width="28" height="60" rx="2" fill="#1a1a1a"/>
+
+  <!-- Legs (2 pairs) -->
+  <rect x="145" y="320" width="24" height="52" rx="2" fill="#8B5A42"/>
+  <rect x="180" y="320" width="24" height="52" rx="2" fill="#8B5A42"/>
+  <rect x="308" y="320" width="24" height="52" rx="2" fill="#8B5A42"/>
+  <rect x="343" y="320" width="24" height="52" rx="2" fill="#8B5A42"/>
+
+  <!-- Subtle highlight on body -->
+  <rect x="116" y="140" width="280" height="8" rx="2" fill="#D4917A" opacity="0.5"/>
+</svg>

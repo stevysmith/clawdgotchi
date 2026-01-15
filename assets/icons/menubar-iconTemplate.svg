@@ -1,0 +1,17 @@
+<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clawd silhouette for menubar - 8-bit style, no rounded corners -->
+  <!-- Body with eyes cut out using fill-rule evenodd -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="
+    M4 3 H18 V13 H4 Z
+    M7 5 H9 V9 H7 Z
+    M13 5 H15 V9 H13 Z
+  " fill="black"/>
+  <!-- Arms -->
+  <rect x="2" y="6" width="2" height="4" fill="black"/>
+  <rect x="18" y="6" width="2" height="4" fill="black"/>
+  <!-- Legs (2 pairs, shorter) -->
+  <rect x="5" y="13" width="2" height="2.5" fill="black"/>
+  <rect x="8" y="13" width="2" height="2.5" fill="black"/>
+  <rect x="12" y="13" width="2" height="2.5" fill="black"/>
+  <rect x="15" y="13" width="2" height="2.5" fill="black"/>
+</svg>
