@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Tray, nativeImage, ipcMain, screen } from 'electron'
+import { app, BrowserWindow, Tray, nativeImage, ipcMain } from 'electron'
 import * as path from 'path'
 import { execSync } from 'child_process'
 import * as fs from 'fs'
@@ -11,11 +11,10 @@ let mainWindow: BrowserWindow | null = null
 let socketServer: SocketServer | null = null
 let sessionManager: SessionManager | null = null
 
-const isDev = process.env.NODE_ENV !== 'production' || !app.isPackaged
-
 // Get the path to the menubar icon (Template version for auto dark/light mode)
 function getTrayIconPath(): string {
-  if (isDev) {
+  // Check app.isPackaged at runtime, not module load time
+  if (!app.isPackaged) {
     // In development, use the assets folder directly
     return path.join(__dirname, '../assets/icons/build/menubar-iconTemplate.png')
   } else {
@@ -24,18 +23,16 @@ function getTrayIconPath(): string {
   }
 }
 
+
 // Create tray icon from file (macOS Template icons auto-adapt to dark/light mode)
 function createTrayIcon() {
   const iconPath = getTrayIconPath()
   const icon = nativeImage.createFromPath(iconPath)
-  // Mark as template for macOS dark/light mode support
   icon.setTemplateImage(true)
   return icon
 }
 
 function createWindow() {
-  const { width: screenWidth } = screen.getPrimaryDisplay().workAreaSize
-
   mainWindow = new BrowserWindow({
     width: 320,
     height: 400,
@@ -52,7 +49,7 @@ function createWindow() {
     },
   })
 
-  if (isDev) {
+  if (!app.isPackaged) {
     mainWindow.loadURL('http://localhost:5173')
     // mainWindow.webContents.openDevTools({ mode: 'detach' })
   } else {
@@ -150,32 +147,40 @@ function getRepoHealth(): {
 }
 
 app.whenReady().then(async () => {
-  // Install Claude Code hooks
-  await installHooks(isDev)
+  try {
+    // Install Claude Code hooks (don't block on failure)
+    try {
+      await installHooks(!app.isPackaged)
+    } catch (e) {
+      console.error('Hook installation failed:', e)
+    }
 
-  // Create session manager
-  sessionManager = new SessionManager()
-  sessionManager.on('update', (sessions: Session[]) => {
-    // Send update to renderer
-    mainWindow?.webContents.send('sessions-updated', sessions)
+    // Create session manager
+    sessionManager = new SessionManager()
+    sessionManager.on('update', (sessions: Session[]) => {
+      // Send update to renderer
+      mainWindow?.webContents.send('sessions-updated', sessions)
 
-    // Resize window based on session count
-    resizeWindowForSessions(sessions.length)
-  })
+      // Resize window based on session count
+      resizeWindowForSessions(sessions.length)
+    })
 
-  // Create socket server and connect to session manager
-  socketServer = new SocketServer()
-  socketServer.on('event', (event) => {
-    sessionManager?.handleEvent(event)
-  })
-  socketServer.start()
+    // Create socket server and connect to session manager
+    socketServer = new SocketServer()
+    socketServer.on('event', (event) => {
+      sessionManager?.handleEvent(event)
+    })
+    socketServer.start()
 
-  // Create tray icon
-  tray = new Tray(createTrayIcon())
-  tray.setToolTip('ClaudeGotchi')
-  tray.on('click', toggleWindow)
+    // Create tray icon
+    tray = new Tray(createTrayIcon())
+    tray.setToolTip('ClawdGotchi')
+    tray.on('click', toggleWindow)
 
-  createWindow()
+    createWindow()
+  } catch (e) {
+    console.error('App initialization failed:', e)
+  }
 
   // IPC handlers
   ipcMain.handle('get-health', () => {
@@ -222,7 +227,8 @@ app.on('will-quit', () => {
   sessionManager?.stop()
 })
 
-app.on('activate', () => {
+app.on('activate', async () => {
+  await app.whenReady()
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }

@@ -21,13 +21,13 @@ A Tamagotchi-style virtual pet that lives in your menubar and tracks your Claude
 
 ### Download (Recommended)
 
-Download the latest `.dmg` from the [Releases](https://github.com/anthropics/clawdgotchi/releases) page.
+Download the latest `.dmg` from the [Releases](https://github.com/stevysmith/clawdgotchi/releases) page.
 
 ### Build from Source
 
 ```bash
 # Clone the repo
-git clone https://github.com/anthropics/clawdgotchi.git
+git clone https://github.com/stevysmith/clawdgotchi.git
 cd clawdgotchi
 
 # Install dependencies

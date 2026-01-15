@@ -2,15 +2,15 @@
   "name": "clawdgotchi",
   "version": "0.1.0",
   "description": "Your Claude Code companion - a Tamagotchi for developer hygiene",
-  "author": "Anthropic",
+  "author": "Steve Smith",
   "license": "MIT",
-  "homepage": "https://github.com/anthropics/clawdgotchi",
+  "homepage": "https://github.com/stevysmith/clawdgotchi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anthropics/clawdgotchi.git"
+    "url": "https://github.com/stevysmith/clawdgotchi.git"
   },
   "bugs": {
-    "url": "https://github.com/anthropics/clawdgotchi/issues"
+    "url": "https://github.com/stevysmith/clawdgotchi/issues"
   },
   "keywords": [
     "claude",

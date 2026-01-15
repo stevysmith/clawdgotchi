@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Claude Code local settings
+.claude/
+
 # Build outputs
 dist/
 dist-electron/
